@@ -1,0 +1,16 @@
+Write a Shell script to list all of the directory files in a directory
+
+#!/bin/sh  
+getdir(){  
+    for i in `ls -a $1`  
+    do  
+        if [ x"$i" != x"." -a x"$i" != x".." ];then  
+            if [ -d "$1/$i" ];then  
+                echo "$1/$i"  
+                getdir "$1/$i"  
+            fi  
+        fi  
+    done  
+}  
+  
+getdir ./lab2
