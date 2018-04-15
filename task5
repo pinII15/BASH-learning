@@ -1,0 +1,22 @@
+ Write a Shell script that accepts a list of file names as its arguments, counts and
+reports the occurrence of each word that is present in the first argument file on other
+argument files. 
+
+#! /bin/bash
+cat $1 | tr -d ',;.!?(){}+-=' | tr '\n' ' ' >tmp
+for file in $*
+do
+  if [ "$file" != "$1" ] 
+then
+  for a in $(awk 'BEGIN{RS=" "} {++w[$0]} END{for(a in w) if(a!="") print a}' tmp)
+do 
+  for b in $(awk 'BEGIN{RS=" "} {++w[$0]} END{for(a in w) if(a!="") print a}' $file)
+do 
+  if [ "$a" = "$b" ] 
+then 
+  echo "$b"  $(grep -o "$b" $file |wc -l) 
+fi
+done
+done
+fi
+done
