@@ -1,0 +1,11 @@
+Write a Shell script that deletes all lines containing a specified word in one or more
+files supplied as arguments to it. 
+
+#!/bin/bash
+for i in ./* 
+do
+if [ -f $i ]
+then
+sed -e '/'"$1"'/d' $i
+fi
+done
