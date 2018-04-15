@@ -1,0 +1,9 @@
+Write a Shell script to find factorial of a given integer.
+
+#!/bin/sh
+sum=1
+for i in $(seq $1)
+ do 
+  sum=$(($sum*$i))
+  done
+  echo $sum
