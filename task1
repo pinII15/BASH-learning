@@ -1,6 +1,4 @@
- Write a Shell script that accepts a filename, starting and ending line numbers asarguments and 
- displays all the lines between the given line numbers. 
- 
+
  #!/bin/sh
 sed -n "${2},${3}p;${3}q" $1
 
